@@ -5,7 +5,7 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   has_secure_password
- has_many :microposts
+  has_many :microposts
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
@@ -54,4 +54,5 @@ class User < ApplicationRecord
     self.favorite_microposts.include?(this_micropost)
   end
   
+
 end
